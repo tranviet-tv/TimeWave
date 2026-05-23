@@ -16,8 +16,12 @@ from django.conf import settings
 from datetime import datetime, timedelta
 import json
 import uuid
-from google import genai
-from google.genai import types
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:
+    genai = None
+    types = None
 
 
 from .models import MeetingRequest, Participant, BusySlot, SuggestedSlot
